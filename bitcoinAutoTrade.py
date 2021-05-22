@@ -69,12 +69,13 @@ while True:
                 target_price = get_target_price(t, 0.5)
                 ma15 = get_ma15(t)
                 current_price = get_current_price(t)
-                print(t+" target_price:" + str(target_price) + " ma15:" + str(ma15) + " current_price:" + str(current_price))
-                if target_price < current_price and ma15 < current_price:
-                    krw = get_balance(t)
-                    if krw > 5000:
-                        buy_result = upbit.buy_market_order(t, krw*0.9995)
-                        post_message(myToken,"#crypto", t + " buy : " +str(buy_result))
+                if current_price < 1000:
+                    print(t+" target_price:" + str(target_price) + " ma15:" + str(ma15) + " current_price:" + str(current_price))
+                    if target_price < current_price and ma15 < current_price:
+                        krw = get_balance(t)
+                        if krw > 5000:
+                            buy_result = upbit.buy_market_order(t, krw*0.9995)
+                            post_message(myToken,"#crypto", t + " buy : " +str(buy_result))
             else:
                 btc = get_balance(t)
                 if btc > 0.00008:
